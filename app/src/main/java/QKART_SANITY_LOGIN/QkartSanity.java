@@ -5,9 +5,12 @@ package QKART_SANITY_LOGIN;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -42,9 +45,8 @@ public class QkartSanity {
         // Visit the Registration page and register a new user
         Register registration = new Register(driver);
         registration.navigateToRegisterPage();
-        status = registration.registerUser("testUser", "abc@123", true);
+        status = registration.registerUser("KiranTe55555stPrsad5h", "abc@123", true);
         if (!status) {
-             logStatus("TestCase 1", "Test Case Pass. User Registration Pass", "PASS");
             logStatus("End TestCase", "Test Case 1: Verify user Registration : ", status ? "PASS" : "FAIL");
 
             // Return False as the test case Fails
@@ -84,7 +86,7 @@ public class QkartSanity {
         // Visit the Registration page and register a new user
         Register registration = new Register(driver);
         registration.navigateToRegisterPage();
-        status = registration.registerUser("testUser", "abc@123", true);
+        status = registration.registerUser("KiranTestP6666h4hgsgsgaaaa", "abc@123", true);
         logStatus("Test Step", "User Registration : ", status ? "PASS" : "FAIL");
         if (!status) {
             logStatus("End TestCase", "Test Case 2: Verify user Registration : ", status ? "PASS" : "FAIL");
@@ -95,7 +97,8 @@ public class QkartSanity {
         // Save the last generated username
         lastGeneratedUserName = registration.lastGeneratedUsername;
 
-        // Visit the Registration page and try to register using the previously registered user's credentials
+        // Visit the Registration page and try to register using the previously
+        // registered user's credentials
         registration.navigateToRegisterPage();
         status = registration.registerUser(lastGeneratedUserName, "abc@123", false);
 
@@ -105,11 +108,13 @@ public class QkartSanity {
         return !status;
     }
 
+
     public static void main(String[] args) throws InterruptedException, MalformedURLException {
         int totalTests = 2;
         int passedTests = 0;
         Boolean status;
-
+        RemoteWebDriver driver = createDriver();
+        
         // Maximize and Implicit Wait for things to initailize
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
